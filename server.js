@@ -7,8 +7,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-require('./app/routing/apiRoutes')(app);
-require('./app/routing/htmlRoutes')(app);
+require('./FriendFinder/app/routing/apiRoutes')(app);
+require('./FriendFinder/app/routing/htmlRoutes')(app);
 
 app.listen(PORT, function() {
     console.log('Listening on PORT: ' + PORT);
