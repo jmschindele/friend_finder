@@ -37,7 +37,7 @@
                             <div class="form-group">
                                     <label for="q1">Question 1:<br>Your mind is alwayz buzzing with unexplored ideas and plans.</label>
                                     <select class="form-control-sm" id="q1">
-                                            <option selected>Please Select</option>
+                                        <option>Please Select</option>
                                         <option>1 (Strongly Disagree) </option>
                                       <option>2</option>
                                       <option>3</option>
@@ -154,15 +154,89 @@
                                     </select>
                                   </div>
                             
-                                  <div class="form-group">
-                                        <button type="submit" class="btn btn-primary" method="POST" href="./api/friends">Submit</button>
+                                  <div>
+                                        <button class="btn btn-primary" id="submit">Submit</button>
                                       </div>
                           </form>
         </div>
         <div class="row">
         <div class="col-12">
-                <div class="col-md-3"><a href="/api/friends">API Friends List</a> | <a href="https://github.com/jmschindele/friend_finder.git">GitHub Repo</a></div>
+                <a href="/api/friends">API Friends List</a> | <a href="https://github.com/jmschindele/friend_finder.git">GitHub Repo</a>
         </div>
     </div>
+
+<!-- add jquery -->
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+    <script>
+    
+    var newUser = {
+
+    };
+
+    function addUser() {
+//form validation
+        // if ($('#user-name').val() === "" || $('#user-photo').val() === "") {
+        //         console.log("Name and photo required");
+        //         return "Name and Photo required";
+        // } else if (
+        //   $('#q1').find(":selected").text() === "Please Select" ||
+        //   $('#q2').find(":selected").text() === "Please Select" ||
+        //   $('#q3').find(":selected").text() === "Please Select" ||
+        //   $('#q4').find(":selected").text() === "Please Select" ||
+        //   $('#q5').find(":selected").text() === "Please Select" ||
+        //   $('#q6').find(":selected").text() === "Please Select" ||
+        //   $('#q7').find(":selected").text() === "Please Select" ||
+        //   $('#q8').find(":selected").text() === "Please Select" ||
+        //   $('#q9').find(":selected").text() === "Please Select" ||
+        //   $('#q10').find(":selected").text() === "Please Select"
+        // ) {
+        //         console.log("No secrets, friend.");
+        //         return "no secrets, friend.";
+        // }
+    newUser = {
+      name: $('#user-name').val(),
+      image: $('#user-photo').val(),
+      answers: [
+          $('#q1').find(":selected").text(),
+          $('#q2').find(":selected").text(),
+          $('#q3').find(":selected").text(),
+          $('#q4').find(":selected").text(),
+          $('#q5').find(":selected").text(),
+          $('#q6').find(":selected").text(),
+          $('#q7').find(":selected").text(),
+          $('#q8').find(":selected").text(),
+          $('#q9').find(":selected").text(),
+          $('#q10').find(":selected").text()
+      ],
+    };
+    ajax();
+    }
+
+
+$('#submit').on('click', function(event){
+ event.preventDefault();
+ addUser();
+ console.log("clicked");
+});
+
+ function ajax() {
+$.ajax({
+        url: '/api/friends',
+        data: newUser,
+        method: 'POST'
+}).then(function(data){
+        // matchFriend();
+        console.log(data, newUser)
+});
+
+// location.reload();
+};
+
+    </script>   
 </body>
 </html>
