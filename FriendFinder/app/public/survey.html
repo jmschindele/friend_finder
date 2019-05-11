@@ -165,6 +165,8 @@
         </div>
     </div>
 
+
+
 <!-- add jquery -->
 
 <script
@@ -180,24 +182,24 @@
 
     function addUser() {
 //form validation
-        // if ($('#user-name').val() === "" || $('#user-photo').val() === "") {
-        //         console.log("Name and photo required");
-        //         return "Name and Photo required";
-        // } else if (
-        //   $('#q1').find(":selected").text() === "Please Select" ||
-        //   $('#q2').find(":selected").text() === "Please Select" ||
-        //   $('#q3').find(":selected").text() === "Please Select" ||
-        //   $('#q4').find(":selected").text() === "Please Select" ||
-        //   $('#q5').find(":selected").text() === "Please Select" ||
-        //   $('#q6').find(":selected").text() === "Please Select" ||
-        //   $('#q7').find(":selected").text() === "Please Select" ||
-        //   $('#q8').find(":selected").text() === "Please Select" ||
-        //   $('#q9').find(":selected").text() === "Please Select" ||
-        //   $('#q10').find(":selected").text() === "Please Select"
-        // ) {
-        //         console.log("No secrets, friend.");
-        //         return "no secrets, friend.";
-        // }
+        if ($('#user-name').val() === "" || $('#user-photo').val() === "") {
+                console.log("Name and photo required");
+                return "Name and Photo required";
+        } else if (
+          $('#q1').find(":selected").text() === "Please Select" ||
+          $('#q2').find(":selected").text() === "Please Select" ||
+          $('#q3').find(":selected").text() === "Please Select" ||
+          $('#q4').find(":selected").text() === "Please Select" ||
+          $('#q5').find(":selected").text() === "Please Select" ||
+          $('#q6').find(":selected").text() === "Please Select" ||
+          $('#q7').find(":selected").text() === "Please Select" ||
+          $('#q8').find(":selected").text() === "Please Select" ||
+          $('#q9').find(":selected").text() === "Please Select" ||
+          $('#q10').find(":selected").text() === "Please Select"
+        ) {
+                console.log("No secrets, friend.");
+                return "no secrets, friend.";
+        }
     newUser = {
       name: $('#user-name').val(),
       image: $('#user-photo').val(),
@@ -234,8 +236,10 @@ $.ajax({
         console.log(data, newUser)
 });
 
-// location.reload();
+location.reload();
+
 };
+
 
     </script>   
 </body>

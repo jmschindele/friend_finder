@@ -24,4 +24,24 @@
 // function matchFriend() {
 //     console.log("called match friend");
 // }
+module.exports =  [];
+
+var friends = [{
+    name: "Henry",
+    image: "asdlkansd",
+    answers: [
+        1,
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1
+
+    ]
+}];
+
 
