@@ -24,7 +24,7 @@
 // function matchFriend() {
 //     console.log("called match friend");
 // }
-module.exports =  friends;
+
 
 var friends = [{
     name: "Henry",
@@ -45,3 +45,4 @@ var friends = [{
 }];
 
 
+module.exports = friends;

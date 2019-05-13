@@ -12,7 +12,8 @@ module.exports = function(app) {
     //list of friend entries
 
     app.get('/api/friends', function(req, res) {
-        res.send(friends);
+        res.json(friends);
+        console.log(res.json(friends))
     });
     
     //Add a new friend
@@ -21,7 +22,7 @@ module.exports = function(app) {
         var newUser = req.body;
         
         var surveyRes = newUser.answers;
-
+       
         //Check match
 
         var matchName = '';
@@ -32,7 +33,7 @@ module.exports = function(app) {
         for (var i = 0; i < friends.length; i++) {
 
             var delta = 0;
-
+            console.log(friends[i].scores[j]);
             for ( var j = 0; j < surveyRes.length; j++) {
                 delta += friends[i].scores[j] = surveyRes[j];
             }

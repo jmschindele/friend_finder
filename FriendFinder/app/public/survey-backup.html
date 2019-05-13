@@ -171,17 +171,12 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> <script>
     
+    var newUser = {
 
+    };
 
-
-
-
-$('#submit').on('click', function(event){
- event.preventDefault();
-
-
-
-        //form validation
+    function addUser() {
+//form validation
         if ($('#user-name').val() === "" || $('#user-photo').val() === "") {
                 console.log("Name and photo required");
                 return "Name and Photo required";
@@ -200,9 +195,9 @@ $('#submit').on('click', function(event){
                 console.log("No secrets, friend.");
                 return "no secrets, friend.";
         }
-    var newUser = {
-      name: $('#user-name').val().trim(),
-      image: $('#user-photo').val().trim(),
+    newUser = {
+      name: $('#user-name').val(),
+      image: $('#user-photo').val(),
       answers: [
           $('#q1').find(":selected").text(),
           $('#q2').find(":selected").text(),
@@ -216,21 +211,31 @@ $('#submit').on('click', function(event){
           $('#q10').find(":selected").text()
       ],
     };
+    ajax();
+    }
 
+
+$('#submit').on('click', function(event){
+ event.preventDefault();
+ addUser();
+ console.log("clicked");
+});
+
+ function ajax() {
 $.ajax({
         url: '/api/friends',
         data: newUser,
         method: 'POST'
-}).done(function(data){
+}).then(function(data){
         // matchFriend();
-// check back to this and change .text to .html if error occurs
-        $('#userMatch').text(data.matchName);
-        $('#userMatchImage').attr("src", data.matchImage)
-
-        //toggle modal here when added
-});
+        console.log(data, newUser)
 });
 
-</script>   
+location.reload();
+
+};
+
+
+    </script>   
 </body>
 </html>
